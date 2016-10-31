@@ -1,0 +1,110 @@
+package com.city.erp.action;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class OrderListAction
+ */
+@WebServlet(
+		urlPatterns = { "/OrderListAction" }, 
+		initParams = { 
+				@WebInitParam(name = "driver", value = "sun.jdbc.odbc.JdbcOdbcDriver"), 
+				@WebInitParam(name = "url", value = "jdbc:odbc:db")
+		})
+public class OrderListAction extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    private Connection cn=null;  
+    
+    public OrderListAction() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		
+	
+		String driver=config.getInitParameter("driver");
+		String url=config.getInitParameter("url");
+		try{
+			Class.forName(driver);
+			cn=DriverManager.getConnection(url);
+			
+		}catch(Exception e){
+			System.out.println("Init Error:"+e.getMessage());
+		}
+	}
+
+	public void destroy() {
+		// TODO Auto-generated method stub
+		super.destroy();
+		try{
+			if(cn!=null&&(!cn.isClosed())){
+				cn.close();cn=null;
+			}
+		}catch(Exception e){
+			System.out.println("Destory Error:"+e.getMessage());
+			
+		}
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
+		response.setCharacterEncoding("GBK");
+		PrintWriter out=response.getWriter();
+		out.println("<HTML>");
+		out.print("<HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.print("<Body>");
+		try{
+			String sql="select a.OrderID,a.OrderDate,c.CompanyName,sum(b.UnitPrice*b.Quantity) total from Orders a inner join [Order Details] b on a.OrderID=b.OrderID inner join Customers c on a.CustomerID=c.CustomerID group by a.OrderID,a.OrderDate,c.CompanyName";
+			PreparedStatement ps=cn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			out.print("<h1>订单信息</h1>");
+			out.print("<table border='1'>");
+
+			out.print("<tr>");
+			out.print("<td>订单号</td><td>订单日期</td><td>客户名称</td><td>订单金额</td>");
+			out.print("</tr>");
+			while(rs.next()){
+				out.print("<tr>");
+				out.println("<td>"+ rs.getInt("OrderID")+"</td>");
+				out.println("<td>"+ rs.getString("OrderDate")+"</td>");
+				out.println("<td>"+ rs.getString("CompanyName")+"</td>");
+				out.println("<td>"+ rs.getDouble("total")+"</td>");
+				out.print("</tr>");
+				
+				
+			}rs.close();
+				ps.close();
+				out.print("</table>");
+		}catch(Exception e){
+			out.print("hdbskfj");
+		}
+		out.print(" </BODY>");
+		out.print("<HTML>");
+		out.flush();
+		out.close();
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request,response);
+	}
+
+}

@@ -1,0 +1,12 @@
+create database cityerp;
+create table Customer(
+CompanyID Varchar(20) not null,
+CompanyName Varchar(50),
+CompanyDesc Text,
+staffnum Int,
+Income Decimal(18,2),
+CompanyType Varchar(20),
+BusinessScope Varchar(200)
+
+);
+select * from Customer;
