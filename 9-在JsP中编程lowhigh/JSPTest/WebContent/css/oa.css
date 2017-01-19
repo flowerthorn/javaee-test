@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+#top{
+	width:%100;
+	height:30px;
+	align:center;
+	background-color:#888;
+}
+#mainarea{
+width:100%;
+height:100px;
+}
+#mainarea #left{
+	width:%20;	
+	height:100px;	
+
+}
+#mainarea #main{
+	width:%60;
+	height:100px;	
+}
+#mainarea #right{
+width:%20;
+height:100px;	
+}
+#footer{
+	width:%100;
+	height:20px;
+	background-color:#888;
+}

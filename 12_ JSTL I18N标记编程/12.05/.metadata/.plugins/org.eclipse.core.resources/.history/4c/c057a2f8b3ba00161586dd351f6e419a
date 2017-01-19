@@ -1,0 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  <ul>
+  		<li><a href="../home/main.do">订单管理</a></li>
+         <li><a href="../department/main.do">库存管理</a></li>
+      </ul>

@@ -1,0 +1,1 @@
+select b.CategoryID,b.CategoryName,sum(c.Quantity*c.UnitPrice) as price from Products a , Categories b , [Order Details] c where b.CategoryID=a.CategoryID and a.ProductID=c.ProductID group by  b.CategoryID,b.CategoryName;

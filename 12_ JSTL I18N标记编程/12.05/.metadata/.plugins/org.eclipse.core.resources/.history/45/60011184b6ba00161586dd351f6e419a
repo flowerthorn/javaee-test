@@ -1,0 +1,39 @@
+package com.sap.web.business;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sap.web.value.ProductCategorySalesValue;
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
+public class ProductCategorySalesBusinessImpl {
+	
+	public List< ProductCategorySalesValue > getSalesList() throws Exception{
+		String sql="select * from Products";
+		List<ProductCategorySalesValue> values=new ArrayList<>();
+		try{
+		    Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		    Connection cn=DriverManager.getConnection("jdbc.odbc.ao");
+		    PreparedStatement ps=cn.prepareStatement(sql);
+		
+		    ResultSet rs=ps.executeQuery();
+	    	while(rs.next()){
+	    		ProductCategorySalesValue value=new ProductCategorySalesValue();
+	    		value.setId(rs.getInt("ProductID"));
+	    		value.setName(rs.getString("ProductName"));
+	    		float sum=0;
+	    		
+	    	}
+	    	rs.close();
+	    	ps.close();
+	    	cn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return values;
+	}
+}

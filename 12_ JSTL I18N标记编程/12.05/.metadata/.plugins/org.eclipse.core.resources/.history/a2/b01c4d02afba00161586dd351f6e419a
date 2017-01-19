@@ -1,0 +1,5 @@
+package com.sap.web.business;
+
+public class ProductCategorySalesBusinessImpl {
+
+}

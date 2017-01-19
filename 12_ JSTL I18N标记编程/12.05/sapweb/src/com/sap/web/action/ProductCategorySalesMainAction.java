@@ -1,0 +1,45 @@
+package com.sap.web.action;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sap.web.business.ProductCategorySalesBusinessImpl;
+import com.sap.web.value.ProductCategorySalesValue;
+
+/**
+ * Servlet implementation class ProductCategorySalesMainAction
+ */
+@WebServlet("/pro"
+		+ "ductcategory/salesmain.do")
+public class ProductCategorySalesMainAction extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public ProductCategorySalesMainAction() {
+        super();
+
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductCategorySalesBusinessImpl business=new ProductCategorySalesBusinessImpl();
+        try{
+        	List<ProductCategorySalesValue> emplist=business.getSalesList();
+        	request.setAttribute("emplist", emplist);
+        	RequestDispatcher rd = request.getRequestDispatcher("salesmain.jsp");
+			rd.forward(request, response);
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request,response);
+	}
+
+}

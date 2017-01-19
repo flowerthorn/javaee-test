@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<h1>CITYOA管理系统</h1>
+<%
+  String userid=request.getParameter("id");
+%>
+<h5><%=userid %></h5>

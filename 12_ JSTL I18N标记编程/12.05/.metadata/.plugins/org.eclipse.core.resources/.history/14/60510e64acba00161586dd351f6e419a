@@ -1,0 +1,5 @@
+package com.sap.web.value;
+
+public class ProductCategorySalesValue {
+
+}

@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+  <ul>
+  		<li><a href="../home/main.do">系统主页</a></li>
+         <li><a href="../department/main.do">部门管理</a></li>
+         <li><a href="../behave/main.do">爱好管理</a></li>
+         <li><a href="../employee/main.do">员工管理</a></li>
+         <li><a href="../logout.do">登录注销</a></li>
+      </ul>

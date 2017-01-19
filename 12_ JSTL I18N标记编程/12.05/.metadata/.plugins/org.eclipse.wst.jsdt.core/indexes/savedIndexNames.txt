@@ -1,0 +1,7 @@
+INDEX VERSION 1.122+C:\Documents and Settings\Administrator\桌面\文件接收柜\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+868396618.index
+1595685133.index
+4057026401.index
+3511303408.index
+2280016423.index
+3405545656.index

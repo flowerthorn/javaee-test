@@ -1,0 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<ul>
+         <li><a href="../department/main.jsp">百度</a></li>
+         <li><a href="../behave/main.jsp">腾讯</a></li>
+         <li><a href="../employee/main.jsp">阿里</a></li>
+         
+      </ul>

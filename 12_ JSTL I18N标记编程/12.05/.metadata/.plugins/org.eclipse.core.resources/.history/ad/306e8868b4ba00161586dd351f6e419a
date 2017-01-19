@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<html>
+<head>
+<fmt:setBundle basename="com.sap.web.message.MessageText"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/oa.css">
+</head>
+<body>
+<div id="top">
+<%@ include file="../include/header.jsp" %>
+</div>
+<div id="mainarea">
+	<div id="left">
+      <%@ include file="../include/left.jsp" %>
+	</div>
+	<div id="main">
+
+		 <h1><fmt:message key="productcategory.salesmain.h1"></fmt:message></h1><hr/>
+		<table>
+		   <tr> 
+		       <td><fmt:message key="productcategory.salesmain.one"></fmt:message></td>
+		       <td><fmt:message key="productcategory.salesmain.two"></fmt:message></td>
+               <td><fmt:message key="productcategory.salesmain.three"></fmt:message></td>
+        </table>
+	</div>
+</div>
+<div id="footer">
+<%@ include file="../include/footer.jsp" %>
+</div>
+</body>
+</html>
